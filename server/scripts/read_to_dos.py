@@ -12,4 +12,5 @@ response = req.json()
 for entry in response:
     name = entry["Name"]
     description= entry["Description"]
-    print(f"{name}: {description}")
+    priority = entry["Priority"]
+    print(f"{name}: {description}, {priority}")
