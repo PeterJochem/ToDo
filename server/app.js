@@ -1,9 +1,12 @@
 const http = require('http');
 var mysql = require('mysql');
 const express = require('express')
+var cors = require('cors')
 const app = express()
 const ip_address = "localhost";
 const port = 3001
+
+app.use(cors()) // Enable all cors
 
 var con = mysql.createConnection({
   host: "localhost",
@@ -14,7 +17,7 @@ var con = mysql.createConnection({
 
 function read_to_dos() {
 return new Promise(function(resolve, reject){
-	con.query("SELECT Name, Description FROM to_do.to_dos", (err, rows) => {
+	con.query("SELECT Name, Description, Priority FROM to_do.to_dos", (err, rows) => {
   	if (err) throw err;
 	resolve(rows);
 });
