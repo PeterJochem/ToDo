@@ -28,6 +28,7 @@ return new Promise(function(resolve, reject){
 
 function delete_to_do(name) {
 return new Promise(function(resolve, reject){
+	console.log(name);
 	con.query("DELETE FROM to_do.to_dos WHERE name='" + name + "';", (err, rows) => {
         if (err) throw err;
         resolve(rows);
@@ -45,10 +46,11 @@ return new Promise(function(resolve, reject){
 }
 
 
-function add_to_do(name, description="", priority=null, date_entered="DEFAULT", date_finished=null) {
+function add_to_do(name, description="", priority=null, date_entered="DEFAULT", date_finished=null, user="PeterJochem") {
 	return new Promise(function(resolve, reject){
 		let str = "INSERT INTO to_do.to_dos VALUES ('" + name + "', '" + description + "', " + "" + priority + ", ";
-		str = str + "" + date_entered + ", " + "" + date_finished + "" + ");" 
+		str = str + "" + date_entered + ", " + "" + date_finished + ", '" + user + "');" 
+		console.log(str)
 		con.query(str, (err, rows) => {
         	if (err) throw err;
 		resolve(rows);
