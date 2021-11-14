@@ -1,5 +1,5 @@
 # To Do App
-Simple browser app for managing my to do list
+This is a simple browser app for managing my to do list
 
 # Results
 Below is a gif of myself using the app <br />
