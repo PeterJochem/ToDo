@@ -1,5 +1,5 @@
 # To Do App
-This is a simple browser app for managing my to do list
+This is a simple browser app for managing my to do list. My goal was to learn a little bit about Express and React. So I created this React app and its backend. The app consists of a database running in a docker container, an Express REST API, and a React frontend.  
 
 # Results
 Below is a gif of myself using the app <br />
