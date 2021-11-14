@@ -74,7 +74,7 @@ app.get('/read_to_dos', (req, res) => {
 
 app.get('/get_user_avatar/:username', (req, res) => {
         try {
-                res.sendFile("/home/peter/Javascript/ToDo/ToDo/to_do2/my-app/public/" + req.params.username + ".jpg");
+                res.sendFile("/home/peter/Javascript/ToDo/ToDo/to_do/my-app/public/" + req.params.username + ".jpg");
 		console.log("Succesfully got avatar for user named " + req.params.username)
         }
         catch (err) {
