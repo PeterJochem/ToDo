@@ -2,7 +2,8 @@
 Simple browser app for managing my to do list
 
 # Results
-Describe - Insert a gif or a video
+Below is a gif of myself using the app <br />
+![Demo gif](videos/demo.gif)
 
 # System Setup
 To start everything, run ```sudo bash launch.sh```
