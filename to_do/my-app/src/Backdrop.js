@@ -18,7 +18,7 @@ export default function SimpleBackdrop(props) {
 	onClick={props.clickHandler}
 	>
 	
-	 <EnterItemModal add_to_do={props.add_to_do} selectedEntry={props.selectedEntry} remove_entry={props.remove_entry} modalMode={props.modalMode} setIsModalOpen={props.setIsModalOpen}/>
+	 <EnterItemModal update_to_do={props.update_to_do} add_to_do={props.add_to_do} selectedEntry={props.selectedEntry} remove_entry={props.remove_entry} modalMode={props.modalMode} setIsModalOpen={props.setIsModalOpen}/>
 	
 	</Backdrop>
 	</div>

@@ -9,6 +9,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import {server_ip} from "./NetworkingConfig.js";
 
 export default function EnterItemModal(props) {
 
@@ -32,22 +33,11 @@ function handlePriorityChange(event) {
 function handleEnterClick(event) { 
 	
 	if (props.modalMode === "editItem") { 
-		if (name !== props.selectedEntry.name) { 
-			console.log("Edge case code should run here");
-			props.remove_entry(props.selectedEntry.name);
-			props.add_to_do(name, priority, description);
-		}
-		else { 
-			// FIX ME - edit the item without adding/deleting it
-			console.log("This code ran");
-			props.remove_entry(props.selectedEntry.name);
-                        props.add_to_do(name, priority, description);
-		}
+		props.update_to_do(name, description, priority);
 	}
 	else { 	
 		props.add_to_do(name, description, priority);
 	}
-		
 	props.setIsModalOpen(false);
 }
 

@@ -39,7 +39,7 @@ function get_to_dos() {
 
 function delete_to_do(name) { 
 	fetch(`http://${server_ip}/remove_to_dos?name=${name}`)
-        .then(res => res.json())
+  	.then(res => res.json())
         .then((data) => {})
         .catch(console.log)
 	get_to_dos()
@@ -50,7 +50,28 @@ function add_to_do(name, description, priority) {
         .then(res => res.json())
         .then((data) => {})
         .catch(console.log)
-	get_to_dos();
+	let to_dos = toDos.slice();
+	to_dos.push(new ToDoEntry({name, description, priority_level: priority, date_entered: null}));
+	sort_to_dos(to_dos);
+	setToDos(to_dos);
+}
+
+function update_to_do(name, description, priority) {
+        fetch(`http://${server_ip}/update_to_do?name=${name}&description=${description}&priority=${priority}`)
+        .then(res => res.json())
+        .then((data) => {})
+        .catch(console.log)
+	let to_dos = [];
+	for (let i = 0; i < toDos.length; i++) { 
+		if (name === toDos[i].name) { 
+			to_dos.push(new ToDoEntry({name, description, priority_level: priority, date_entered: null}));
+		}
+		else { 
+			to_dos.push(toDos[i]);
+		}
+		sort_to_dos(to_dos);
+	}
+	setToDos(to_dos);
 }
 
 useEffect(() => { 		
@@ -80,7 +101,13 @@ function reset() {
 
 return <div className=""> 
 	<AccountMenu reset={reset()} add_to_do={add_to_do} setModalMode={setModalMode} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-	{isModalOpen ? <SimpleBackdrop add_to_do={add_to_do} modalMode={modalMode} open={isModalOpen} selectedEntry={selectedEntry} remove_entry={delete_to_do} setIsModalOpen={setIsModalOpen} />: null}
+	{isModalOpen ? <SimpleBackdrop  update_to_do={update_to_do} 
+				 	add_to_do={add_to_do}
+					modalMode={modalMode}
+					open={isModalOpen} 
+					selectedEntry={selectedEntry}
+					remove_entry={delete_to_do}
+					setIsModalOpen={setIsModalOpen} />: null}
 	
 	{toDos.map((to_do) =>  {
 	return (
@@ -92,6 +119,7 @@ return <div className="">
 			setIsModalOpen={setIsModalOpen}
 			setModalMode={setModalMode}
 			removeEntry={delete_to_do}
+			updateEntry={update_to_do}
 		/>
 		)
 	}

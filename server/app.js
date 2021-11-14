@@ -58,6 +58,10 @@ function add_to_do(name, description="", priority=null, date_entered="DEFAULT", 
 	});
 }
 
+function update_to_do(name, description="", priority=null, date_entered="DEFAULT", date_finished=null, user="PeterJochem") { 
+	return delete_to_do(name).then(() => {add_to_do(name, description, priority, date_entered, date_finished, user)});
+}
+
 
 app.get('/read_to_dos', (req, res) => {
 	try {
@@ -96,6 +100,21 @@ app.get('/add_to_dos/', (req, res) => {
 	}
 	res.sendStatus(200);
 })
+
+app.get('/update_to_do/', (req, res) => {
+	try { 
+		update_to_do(req.query.name, req.query.description);
+		//add_to_do(req.query.name, req.query.description);
+		console.log("Updated an item named " + req.query.name)
+	}
+	catch (err) { 
+		console.log("Unable to update to_do entry with the name " + req.query.name);
+		res.sendStatus(500);
+	}
+	res.sendStatus(200);
+})
+
+
 
 
 app.get('/remove_to_dos', (req, res) => {
