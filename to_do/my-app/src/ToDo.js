@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
 import ToDoEntry from "./ToDoEntry.js";
-import SimpleBackdrop from "./Backdrop2.js";
-import DisplayItemModal from "./DisplayItemModal.js";
-import { AppBar } from '@mui/material';
-import Typography from "@material-ui/core/Typography";
-import BasicMenu from "./BasicMenu.js";
+import SimpleBackdrop from "./Backdrop.js";
 import AccountMenu from "./AccountMenu.js";
 import {server_ip} from "./NetworkingConfig.js";
 
@@ -62,7 +58,8 @@ useEffect(() => {
 	return () => {
     		clearInterval(interval);
   	};
-}, []);
+}, []); // eslint-disable-line react-hooks/exhaustive-deps
+
 
 
 let emptyToDo = new ToDoEntry({name: "", description: "",

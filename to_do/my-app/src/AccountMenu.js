@@ -9,10 +9,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 
-//import PersonAdd from '@materail-ui/icons/PersonAdd';
-//import Settings from '@material-ui/icons/Settings';
-//import Logout from '@material/icons/Logout';
-
 let avatar_src = "/avatar.jpg";
 avatar_src = "http://localhost:3001/get_user_avatar/PeterJochem";
 
